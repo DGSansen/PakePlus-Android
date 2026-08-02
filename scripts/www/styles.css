@@ -50,8 +50,15 @@ button:hover {
   opacity: 0.9;
 }
 
+/* ========== 表格容器（中等屏幕横向滚动） ========== */
+.table-wrapper {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
 table {
   width: 100%;
+  table-layout: fixed;
   border-collapse: collapse;
   font-size: 14px;
 }
@@ -100,9 +107,40 @@ select:focus, input[type="number"]:focus {
   text-align: center;
 }
 
-.countdown-input:focus {
-  outline: none;
-  border-color: #2b7de9;
+.countdown-cell {
+  padding: 8px 10px;
+}
+
+/* ========== 繁殖阶段列 ========== */
+.breed-phase {
+  width: 100%;
+  padding: 6px 8px;
+  font-size: 14px;
+  font-variant-numeric: tabular-nums;
+  font-weight: 500;
+  color: #1a1a1a;
+  border: 1px solid #d0d3d9;
+  border-radius: 4px;
+  background: #fff;
+  text-align: center;
+  line-height: 1.4;
+  user-select: none;
+}
+
+.breed-phase.breed-available {
+  color: #2b7de9;
+  background: #e8f0fe;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.breed-phase.breed-available:hover {
+  background: #d0e0ff;
+}
+
+.breed-phase.breed-sellable {
+  color: #ff4d4f;
+  background: #fff1f0;
 }
 
 .delete-btn {
@@ -258,7 +296,6 @@ select:focus, input[type="number"]:focus {
   border-radius: 4px;
   font-size: 13px;
 }
-
 .miao-url-item button {
   background: #ff4d4f;
   color: white;
@@ -267,8 +304,16 @@ select:focus, input[type="number"]:focus {
   padding: 6px 10px;
   cursor: pointer;
   font-size: 12px;
-  width: auto;
-  flex: none;
+}
+
+.miao-prefix {
+  font-size: 12px;
+  color: #999;
+  white-space: nowrap;
+  word-break: break-all;
+  max-width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .add-btn-sm {
@@ -520,4 +565,87 @@ select:focus, input[type="number"]:focus {
     color: #1a1a1a;
     font-variant-numeric: tabular-nums;
   }
+}
+
+/* ========== 日志页面 ========== */
+.log-list {
+  font-size: 13px;
+}
+
+.log-item {
+  border: 1px solid #e0e2e6;
+  border-left: 4px solid #2b7de9;
+  border-radius: 8px;
+  padding: 12px 14px;
+  margin-bottom: 10px;
+  background: #fff;
+  line-height: 1.7;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+}
+
+.log-item .log-time {
+  color: #999;
+  font-size: 12px;
+}
+
+.log-item .log-id {
+  font-weight: 600;
+  color: #2b7de9;
+}
+
+.log-item .log-title {
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 2px;
+}
+
+.log-item .log-animal {
+  color: #666;
+  margin-left: 6px;
+}
+
+.log-item .log-content {
+  color: #333;
+}
+
+.log-item .log-miao1 {
+  color: #52c41a;
+  font-size: 12px;
+}
+
+.log-item .log-miao2 {
+  color: #fa8c16;
+  font-size: 12px;
+}
+
+.log-item .log-miao-fail {
+  color: #ff4d4f;
+}
+
+.log-empty {
+  text-align: center;
+  color: #999;
+  padding: 32px;
+  font-size: 14px;
+}
+
+/* ========== Toast 提示 ========== */
+.toast {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 10px 24px;
+  border-radius: 6px;
+  font-size: 14px;
+  z-index: 9999;
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+
+.toast.show {
+  opacity: 1;
 }
