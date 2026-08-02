@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>动物计时提醒器</title>
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css?v=11" />
 </head>
 <body>
   <!-- 主界面 -->
@@ -14,23 +14,23 @@
       <div class="toolbar">
         <button id="addBtn" type="button">添加</button>
         <button id="settingsBtn" type="button" class="secondary">设置</button>
+        <button id="logBtn" type="button" class="secondary">日志</button>
       </div>
 
+      <div class="table-wrapper">
       <table>
         <thead>
           <tr>
             <th>所属ID</th>
-            <th>动物名称</th>
-            <th>成长阶段</th>
-            <th>剩余饲料</th>
-            <th>剩余清洁度</th>
+            <th>种类</th>
+            <th>年龄</th>
             <th>下一阶段</th>
-            <th>繁殖倒计时</th>
-            <th>售出倒计时</th>
+            <th>繁殖阶段</th>
           </tr>
         </thead>
         <tbody id="tableBody"></tbody>
       </table>
+      </div>
     </div>
   </div>
 
@@ -73,6 +73,29 @@
             <span class="slider"></span>
           </label>
         </div>
+        <div class="setting-item">
+          <label>音频保活</label>
+          <label class="switch">
+            <input type="checkbox" id="audioKeepAlive" checked>
+            <span class="slider"></span>
+          </label>
+        </div>
+        <div class="setting-item">
+          <label>选择铃声</label>
+          <select id="ringtoneSelect" style="width:auto;max-width:180px;font-size:13px;"></select>
+        </div>
+        <div class="setting-item">
+          <label>提醒间隔（分钟）</label>
+          <input type="number" id="remindInterval" min="1" max="1440" value="120" style="width:80px;padding:4px;text-align:center;">
+        </div>
+        <div class="setting-item">
+          <label>免打扰开始（时）</label>
+          <input type="number" id="quietStart" min="0" max="23" value="0" style="width:80px;padding:4px;text-align:center;">
+        </div>
+        <div class="setting-item">
+          <label>免打扰结束（时）</label>
+          <input type="number" id="quietEnd" min="0" max="23" value="8" style="width:80px;padding:4px;text-align:center;">
+        </div>
       </div>
 
       <div class="settings-section">
@@ -86,18 +109,26 @@
         <div id="idListContainer" class="id-list id-alias-grid"></div>
       </div>
 
-      <div class="settings-section">
-        <h3>动物时间配置</h3>
-        <div id="animalSettingsContainer"></div>
-      </div>
-
       <div class="settings-footer">
         <button id="saveSettings" type="button">保存设置</button>
       </div>
     </div>
   </div>
 
-  <script src="data.js?v=3"></script>
-  <script src="app.js?v=3"></script>
+  <!-- 日志页面 -->
+  <div id="logPage" class="page hidden">
+    <div class="container">
+      <div class="settings-header">
+        <button id="logBackBtn" class="back-btn">&larr; 返回</button>
+        <h1>通知日志</h1>
+        <button id="clearLogBtn" type="button" class="secondary" style="width:auto;font-size:12px;padding:4px 10px;">清空日志</button>
+      </div>
+      <div id="logContainer" class="log-list"></div>
+    </div>
+  </div>
+
+  <script src="data.js?v=9"></script>
+  <script src="app.js?v=16"></script>
+  <div id="toast" class="toast"></div>
 </body>
 </html>
